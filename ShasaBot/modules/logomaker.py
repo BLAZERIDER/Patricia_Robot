@@ -1,13 +1,14 @@
 import os 
 import glob
 import random
-from . import *
 
 from ShasaBot.events import register
 from ShasaBot import OWNER_ID
 from ShasaBot import telethn as tbot
 
 from PIL import Image, ImageDraw, ImageFont
+
+from . import *
 
 @register(pattern="^/logo ?(.*)")
 async def lego(event):
