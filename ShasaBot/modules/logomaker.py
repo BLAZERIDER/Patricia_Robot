@@ -8,8 +8,6 @@ from ShasaBot import telethn as tbot
 
 from PIL import Image, ImageDraw, ImageFont
 
-from . import *
-
 @register(pattern="^/logo ?(.*)")
 async def lego(event):
  quew = event.pattern_match.group(1)
