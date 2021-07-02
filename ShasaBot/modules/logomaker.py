@@ -94,8 +94,7 @@ async def logo_gen(event):
         if not font_.startswith("./ShasaBot/resources/font"):
             os.remove(font_)
 
-except Exception as e:
-   await event.reply(f'Error Report @PrinceBotSupport, {e}')
+
 
 file_help = os.path.basename(__file__)
 file_help = file_help.replace(".py", "")
