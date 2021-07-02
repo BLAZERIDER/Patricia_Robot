@@ -9,7 +9,7 @@ from ShasaBot import telethn as tbot
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
 
-from . import *
+
 
 
 @ultroid_cmd(pattern="loggo ?(.*)")
