@@ -31,23 +31,23 @@ async def logo_gen(event):
     else:
         pics = []
         async for i in ultroid.iter_messages(
-            "@UltroidLogos", filter=InputMessagesFilterPhotos
+            "@logoppabryo", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
-        fpath_ = glob.glob("/asunarobot/resources/font/*.ttf")
+        fpath_ = glob.glob("/ShasaBot/resources/font/*.ttf")
         font_ = random.choice(fpath_)
     if not bg_:
         pics = []
         async for i in ultroid.iter_messages(
-            "@UltroidLogos", filter=InputMessagesFilterPhotos
+            "@logoppabryo", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
     if not font_:
-        fpath_ = glob.glob("/asunarobot/resources/font/*.ttf")
+        fpath_ = glob.glob("/ShasaBot/resources/font/*.ttf")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
         fnt_size = 150
@@ -90,7 +90,7 @@ async def logo_gen(event):
     if os.path.exists(bg_):
         os.remove(bg_)
     if os.path.exists(font_):
-        if not font_.startswith("/asunarobot/resources/fonts"):
+        if not font_.startswith("/ShasaBot/resources/fonts"):
             os.remove(font_)
 
 
