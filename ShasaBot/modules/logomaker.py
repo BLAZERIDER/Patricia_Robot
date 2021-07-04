@@ -7,7 +7,7 @@ from telethon.tl.types import InputMessagesFilterPhotos
 
 from ShasaBot import *
 from ShasaBot.events import register
-from ShasaBot import telethon as pbot 
+from ShasaBot import telethn as pbot 
 from telethon import events
 
 
