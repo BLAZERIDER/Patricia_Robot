@@ -1,23 +1,22 @@
-import os 
 import glob
+import os
 import random
-
-from ShasaBot.events import register
-from ShasaBot import OWNER_ID
-from ShasaBot import telethn as tbot
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterPhotos
 
+from ShasaBot import *
+from ShasaBot.events import register
+from ShasaBot import telethon as pbot 
+from telethon import events
 
 
-
-@register(pattern="loggo ?(.*)")
+@register(pattern="logo ?(.*)")
 async def logo_gen(event):
     xx = await eor(event, get_string("com_1"))
     name = event.pattern_match.group(1)
     if not name:
-        await eod(xx, "Give a name too!")
+        await eod(xx, "`Give a name too!`")
     bg_, font_ = "", ""
     if event.reply_to_msg_id:
         temp = await event.get_reply_message()
@@ -32,23 +31,23 @@ async def logo_gen(event):
     else:
         pics = []
         async for i in ultroid.iter_messages(
-            "@logosopbolte", filter=InputMessagesFilterPhotos
+            "@UltroidLogos", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
-        fpath_ = glob.glob("resources/fonts/*")
+        fpath_ = glob.glob("/asunarobot/resources/font/*.ttf")
         font_ = random.choice(fpath_)
     if not bg_:
         pics = []
         async for i in ultroid.iter_messages(
-            "@logosopbolte", filter=InputMessagesFilterPhotos
+            "@UltroidLogos", filter=InputMessagesFilterPhotos
         ):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
     if not font_:
-        fpath_ = glob.glob("resources/fonts/*")
+        fpath_ = glob.glob("/asunarobot/resources/font/*.ttf")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
         fnt_size = 150
@@ -78,7 +77,7 @@ async def logo_gen(event):
     )
     flnme = f"ultd.png"
     img.save(flnme, "png")
-    await xx.edit("Done!")
+    await xx.edit("`Done!`")
     if os.path.exists(flnme):
         await event.client.send_file(
             event.chat_id,
@@ -91,17 +90,15 @@ async def logo_gen(event):
     if os.path.exists(bg_):
         os.remove(bg_)
     if os.path.exists(font_):
-        if not font_.startswith("./ShasaBot/resources/font"):
+        if not font_.startswith("/asunarobot/resources/fonts"):
             os.remove(font_)
 
 
 
-file_help = os.path.basename(__file__)
-file_help = file_help.replace(".py", "")
-file_helpo = file_help.replace("_", " ")
-
-help = """
- • /logo text*:*  Create your logo with your name
- • /alogo*:*  Create your logo with your name
- """
-mod_name = "LOGO"
+__mod_name__ = "Logomaker"
+__help__ = """
+   /logo   user for 
+   Generate a logo of the given Text
+   Or Reply To image , to write ur text on it.
+   Or Reply To Font File, To write with that font.
+"""
