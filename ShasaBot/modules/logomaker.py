@@ -36,7 +36,7 @@ async def logo_gen(event):
             pics.append(i)
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
-        fpath_ = glob.glob("/ShasaBot/resources/font/*.ttf")
+        fpath_ = glob.glob("/ShasaBot/resources/fonts/*.ttf")
         font_ = random.choice(fpath_)
     if not bg_:
         pics = []
@@ -47,7 +47,7 @@ async def logo_gen(event):
         id_ = random.choice(pics)
         bg_ = await id_.download_media()
     if not font_:
-        fpath_ = glob.glob("/ShasaBot/resources/font/*.ttf")
+        fpath_ = glob.glob("/ShasaBot/resources/fonts/*.ttf")
         font_ = random.choice(fpath_)
     if len(name) <= 8:
         fnt_size = 150
